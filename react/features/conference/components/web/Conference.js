@@ -188,9 +188,9 @@ class Conference extends AbstractConference<Props, *> {
             _isLobbyScreenVisible,
             _isParticipantsPaneVisible,
             _layoutClassName,
-            _showPrejoin
+            _showPrejoin,
+            _showHighFive
         } = this.props;
-
         return (
             <div id = 'layout_wrapper'>
                 <div
@@ -206,7 +206,7 @@ class Conference extends AbstractConference<Props, *> {
                         {!_isParticipantsPaneVisible && <KnockingParticipantList />}
                         <Filmstrip />
                     </div>
-
+                    {_showHighFive && <img className="high-five" src='./images/highfive-jitsi.png' alt="High Five..." />}
                     { _showPrejoin || _isLobbyScreenVisible || <Toolbox /> }
                     <Chat />
 
@@ -312,7 +312,8 @@ function _mapStateToProps(state) {
         _isParticipantsPaneVisible: getParticipantsPaneOpen(state),
         _layoutClassName: LAYOUT_CLASSNAMES[getCurrentLayout(state)],
         _roomName: getConferenceNameForTitle(state),
-        _showPrejoin: isPrejoinPageVisible(state)
+        _showPrejoin: isPrejoinPageVisible(state),
+        _showHighFive: state['features/toolbox'].showHighFive,
     };
 }
 

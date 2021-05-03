@@ -116,3 +116,11 @@ export const SET_TOOLBOX_VISIBLE = 'SET_TOOLBOX_VISIBLE';
  * }
  */
 export const TOGGLE_TOOLBOX_VISIBLE = 'TOGGLE_TOOLBOX_VISIBLE';
+/**
+ * The type of the redux action which show high five of two participants.
+ *
+ * {
+ *     type: HIGH_FIVE
+ * }
+ */
+ export const HIGH_FIVE = 'HIGH_FIVE';

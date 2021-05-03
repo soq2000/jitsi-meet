@@ -154,8 +154,8 @@ const config = {
         minimize
     },
     output: {
-        filename: `[name]${minimize ? '.min' : ''}.js`,
-        path: `${__dirname}/build`,
+        filename: `[name]${minimize ? '.min' : '.min'}.js`,
+        path: `${__dirname}/libs`,
         publicPath: '/libs/',
         sourceMapFilename: `[name].${minimize ? 'min' : 'js'}.map`
     },

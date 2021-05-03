@@ -134,6 +134,7 @@ import { AudioMixerEffect } from './react/features/stream-effects/audio-mixer/Au
 import { createPresenterEffect } from './react/features/stream-effects/presenter';
 import { endpointMessageReceived } from './react/features/subtitles';
 import UIEvents from './service/UI/UIEvents';
+import { highFive } from './react/features/toolbox/actions';
 
 const logger = Logger.getLogger(__filename);
 
@@ -2507,6 +2508,15 @@ export default {
                     APP.UI.onSharedVideoUpdate(id, value, attributes);
                 }
             });
+        
+        room.addCommandListener('HIGH_FIVE', (data, from) => {
+            const localParticipant = getLocalParticipant(APP.store.getState());
+            if(data.value == localParticipant.id){
+                APP.store.dispatch(highFive(true));
+                setTimeout(()  => { APP.store.dispatch(highFive(false)); }, 4000);
+            }
+        });
+    
     },
 
     /**

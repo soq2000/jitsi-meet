@@ -1,6 +1,7 @@
 /* application specific logic */
 
 import 'jquery';
+import 'jQuery-Impromptu';
 
 import 'olm';
 

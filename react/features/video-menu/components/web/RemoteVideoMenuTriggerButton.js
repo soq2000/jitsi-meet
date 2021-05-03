@@ -21,7 +21,8 @@ import {
     PrivateMessageMenuButton,
     RemoteControlButton,
     VideoMenu,
-    VolumeSlider
+    VolumeSlider,
+    HighFiveButton
 } from './';
 
 declare var $: Object;
@@ -42,11 +43,6 @@ type Props = {
      * Whether or not to display the remote mute buttons.
      */
     _disableRemoteMute: Boolean,
-
-    /**
-     * Whether or not to display the grant moderator button.
-     */
-    _disableGrantModerator: Boolean,
 
     /**
      * Whether or not the participant is a conference moderator.
@@ -141,7 +137,6 @@ class RemoteVideoMenuTriggerButton extends Component<Props> {
         const {
             _disableKick,
             _disableRemoteMute,
-            _disableGrantModerator,
             _isModerator,
             dispatch,
             initialVolumeValue,
@@ -176,13 +171,11 @@ class RemoteVideoMenuTriggerButton extends Component<Props> {
                 );
             }
 
-            if (!_disableGrantModerator) {
-                buttons.push(
-                    <GrantModeratorButton
-                        key = 'grant-moderator'
-                        participantID = { participantID } />
-                );
-            }
+            buttons.push(
+                <GrantModeratorButton
+                    key = 'grant-moderator'
+                    participantID = { participantID } />
+            );
 
             if (!_disableKick) {
                 buttons.push(
@@ -214,6 +207,12 @@ class RemoteVideoMenuTriggerButton extends Component<Props> {
         buttons.push(
             <PrivateMessageMenuButton
                 key = 'privateMessage'
+                participantID = { participantID } />
+        );
+
+        buttons.push(
+            <HighFiveButton
+                key = 'highFive'
                 participantID = { participantID } />
         );
 
@@ -250,7 +249,7 @@ function _mapStateToProps(state, ownProps) {
     const { participantID } = ownProps;
     const localParticipant = getLocalParticipant(state);
     const { remoteVideoMenu = {}, disableRemoteMute } = state['features/base/config'];
-    const { disableKick, disableGrantModerator } = remoteVideoMenu;
+    const { disableKick } = remoteVideoMenu;
     let _remoteControlState = null;
     const participant = getParticipantById(state, participantID);
     const _isRemoteControlSessionActive = participant?.remoteControlSessionStatus ?? false;
@@ -291,8 +290,7 @@ function _mapStateToProps(state, ownProps) {
         _disableRemoteMute: Boolean(disableRemoteMute),
         _remoteControlState,
         _menuPosition,
-        _overflowDrawer: overflowDrawer,
-        _disableGrantModerator: Boolean(disableGrantModerator)
+        _overflowDrawer: overflowDrawer
     };
 }
 

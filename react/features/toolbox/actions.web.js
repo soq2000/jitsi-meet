@@ -5,7 +5,8 @@ import type { Dispatch } from 'redux';
 import {
     FULL_SCREEN_CHANGED,
     SET_FULL_SCREEN,
-    SET_OVERFLOW_DRAWER
+    SET_OVERFLOW_DRAWER,
+    HIGH_FIVE
 } from './actionTypes';
 import {
     clearToolboxTimeout,
@@ -158,5 +159,12 @@ export function setOverflowDrawer(displayAsDrawer: boolean) {
     return {
         type: SET_OVERFLOW_DRAWER,
         displayAsDrawer
+    };
+}
+
+export function highFive(showHighFive: boolean) {
+    return {
+        type: HIGH_FIVE,
+        showHighFive
     };
 }

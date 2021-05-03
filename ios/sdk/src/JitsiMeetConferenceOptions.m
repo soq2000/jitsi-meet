@@ -52,9 +52,6 @@ static NSString *const WelcomePageEnabledFeatureFlag = @"welcomepage.enabled";
         _videoMuted = nil;
 
         _userInfo = nil;
-
-        _callHandle = nil;
-        _callUUID = nil;
     }
     
     return self;
@@ -171,9 +168,6 @@ static NSString *const WelcomePageEnabledFeatureFlag = @"welcomepage.enabled";
         _featureFlags = [NSDictionary dictionaryWithDictionary:builder.featureFlags];
 
         _userInfo = builder.userInfo;
-
-        _callHandle = builder.callHandle;
-        _callUUID = builder.callUUID;
     }
 
     return self;
@@ -210,12 +204,6 @@ static NSString *const WelcomePageEnabledFeatureFlag = @"welcomepage.enabled";
     }
     if (_subject != nil) {
         config[@"subject"] = self.subject;
-    }
-    if (_callHandle != nil) {
-        config[@"callHandle"] = self.callHandle;
-    }
-    if (_callUUID != nil) {
-        config[@"callUUID"] = [self.callUUID UUIDString];
     }
 
     NSMutableDictionary *urlProps = [[NSMutableDictionary alloc] init];

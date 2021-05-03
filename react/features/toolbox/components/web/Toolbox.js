@@ -368,7 +368,10 @@ class Toolbox extends Component<Props> {
         return (
             <div
                 className = { rootClassNames }
-                id = 'new-toolbox'>
+                id = 'new-toolbox'
+                onFocus = { this._onTabIn }
+                onMouseOut = { this._onMouseOut }
+                onMouseOver = { this._onMouseOver }>
                 { this._renderToolboxContent() }
             </div>
         );
@@ -1297,11 +1300,7 @@ class Toolbox extends Component<Props> {
 
         return (
             <div className = { containerClassName }>
-                <div
-                    className = 'toolbox-content-wrapper'
-                    onFocus = { this._onTabIn }
-                    onMouseOut = { this._onMouseOut }
-                    onMouseOver = { this._onMouseOver }>
+                <div className = 'toolbox-content-wrapper'>
                     <div className = 'toolbox-content-items'>
                         { this._renderAudioButton() }
                         { this._renderVideoButton() }

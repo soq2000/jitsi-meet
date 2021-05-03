@@ -7,6 +7,7 @@ import { connect } from '../../../base/redux';
 import { updateSettings } from '../../../base/settings';
 
 import VideoMenuButton from './VideoMenuButton';
+import {captureLargeVideoScreenshot} from '../../../large-video';
 
 /**
  * The type of the React {@code Component} props of {@link FlipLocalVideoButton}.
@@ -61,7 +62,7 @@ class FlipLocalVideoButton extends PureComponent<Props> {
 
         return (
             <VideoMenuButton
-                buttonText = { t('videothumbnail.flip') }
+                buttonText = { "Flip" }
                 displayClass = 'fliplink'
                 id = 'flipLocalVideoButton'
                 onClick = { this._onClick } />

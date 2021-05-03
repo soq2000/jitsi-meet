@@ -13,7 +13,8 @@ import {
     SET_TOOLBOX_TIMEOUT,
     SET_TOOLBOX_TIMEOUT_MS,
     SET_TOOLBOX_VISIBLE,
-    TOGGLE_TOOLBOX_VISIBLE
+    TOGGLE_TOOLBOX_VISIBLE,
+    HIGH_FIVE
 } from './actionTypes';
 
 declare var interfaceConfig: Object;
@@ -30,7 +31,8 @@ declare var interfaceConfig: Object;
  *     overflowMenuVisible: boolean,
  *     timeoutID: number,
  *     timeoutMS: number,
- *     visible: boolean
+ *     visible: boolean,
+ *     showHighFive: boolean,
  * }}
  */
 function _getInitialState() {
@@ -116,7 +118,9 @@ function _getInitialState() {
          *
          * @type {boolean}
          */
-        visible
+        visible,
+        
+        showHighFive: false
     };
 }
 
@@ -185,6 +189,12 @@ ReducerRegistry.register(
 
         case TOGGLE_TOOLBOX_VISIBLE:
             return set(state, 'visible', state.alwaysVisible || !state.visible);
+
+        case HIGH_FIVE:
+            return {
+                ...state,
+                showHighFive: action.showHighFive
+            };
         }
 
         return state;

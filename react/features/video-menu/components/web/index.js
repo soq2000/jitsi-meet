@@ -18,3 +18,4 @@ export { default as VideoMenu } from './VideoMenu';
 export { default as RemoteVideoMenuTriggerButton } from './RemoteVideoMenuTriggerButton';
 export { default as LocalVideoMenuTriggerButton } from './LocalVideoMenuTriggerButton';
 export { default as VolumeSlider } from './VolumeSlider';
+export { default as HighFiveButton } from './HighFiveButton';

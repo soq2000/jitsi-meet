@@ -715,3 +715,20 @@
     white-space: nowrap;
     width: 100%;
 }
+
+.high-five {
+    position: relative;
+    animation-name: highfive;
+    animation-duration: 4s;
+    animation-iteration-count: 1;
+    animation-direction: alternate-reverse;
+    z-index: 99999999;
+    width: 100px;
+}
+@keyframes highfive {
+    0%   {left:0px; top:0px; width: 100px;}
+    25%  {left:250px; top:150px; width: 150px;}
+    50%  {left:500px; top:250px; width: 200px;}
+    75%  {left:250px; top:200px; width: 150px;}
+    100% {left:0px; top:0px; width: 100px;}
+  }
